@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-export const useProduct = ({ initialCount = 0, minValue = 0 }) => {
-  const [counter, setCounter] = useState(initialCount);
+export const useProduct = () => {
+  const [counter, setCounter] = useState(0);
 
   const increaseBy = (value: number) => {
-    setCounter((prev) => Math.max(prev + value, minValue));
+    setCounter((prev) => Math.max(prev + value, 0));
   };
 
   return { counter, increaseBy };
