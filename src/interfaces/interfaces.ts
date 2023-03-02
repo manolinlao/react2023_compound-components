@@ -9,6 +9,8 @@ export interface Product {
 export interface ProductCardProps {
   product: Product;
   children?: ReactElement | ReactElement[];
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 export interface ProductContextProps {

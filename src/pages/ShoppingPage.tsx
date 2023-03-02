@@ -22,13 +22,13 @@ export const ShoppingPage = () => {
           flexWrap: 'wrap'
         }}
       >
-        <ProductCard product={product}>
-          <ProductImage />
-          <ProductTitle />
-          <ProductButtons />
+        <ProductCard product={product} className='bg-dark' style={{ backgroundColor: '#70d1f8' }}>
+          <ProductImage className='custom-image' />
+          <ProductTitle className='text-white' />
+          <ProductButtons className='custom-buttons' />
         </ProductCard>
 
-        <ProductCard product={product}>
+        <ProductCard product={product} className='bg-dark'>
           <ProductImage />
           <ProductTitle />
           <ProductButtons />
