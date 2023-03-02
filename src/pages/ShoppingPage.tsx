@@ -34,20 +34,30 @@ export const ShoppingPage = () => {
   */
   const [shoppingCart, setShoppingCart] = useState<{ [key: string]: ProductInCart }>({});
 
+  // esto ya no va a regresar el count sino si el contaje se ha incrementado en +1 o-1
   const onProductCountChange = (args: OnChangeArgs) => {
     console.log('on product count change', args);
+    //ahora count valdrá 1 o -1
     const { count, product } = args;
 
     setShoppingCart((oldShoppingCart) => {
-      if (count === 0) {
-        delete oldShoppingCart[product.id];
-        return { ...oldShoppingCart };
-      } else {
+      // si no existe el producto creamos uno con count 0
+      const productInCart: ProductInCart = oldShoppingCart[product.id] || { ...product, count: 0 };
+
+      if (Math.max(productInCart.count + count, 0) > 0) {
+        //puedo incrementar
+        productInCart.count += count;
         return {
           ...oldShoppingCart,
-          [product.id]: { ...product, count }
+          [product.id]: productInCart
         };
       }
+      // si llegamos aqui es que el artículo no existe o el count es <0
+      // hay que borrar el producto
+      delete oldShoppingCart[product.id];
+      return {
+        ...oldShoppingCart
+      };
     });
   };
 
