@@ -13,10 +13,11 @@ export const useProduct = (product: Product, onChange?: (args: OnChangeArgs) => 
 
   const increaseBy = (value: number) => {
     // si viene función onChange, se ejecuta
+    console.log('increaseby');
     if (isControlled.current && onChange) {
       return onChange({ count: value, product });
     }
-
+    console.log('increaseby 2');
     const newValue = Math.max(counter + value, 0);
     setCounter(newValue);
 
